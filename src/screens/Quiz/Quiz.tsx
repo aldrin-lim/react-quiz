@@ -3,7 +3,6 @@ import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import { Redirect } from "react-router-dom";
 import { useQuizContext } from "../../contexts/quizContext";
-import Summary from "../Summary";
 import Answer from "./Answer";
 
 const useStyles = makeStyles(() => ({

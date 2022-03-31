@@ -37,7 +37,7 @@ export const QuizContextProvider: React.FC = ({ children }) => {
   const fetchQuestions = () => {
     const fetchQuestions = async () => {
       const api = await axios.get<{ results: Questionnaire[] }>(
-        "https://opentdb.com/api.php?amount=10&difficulty=hard"
+        "https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean"
       );
       dispatch({
         type: "fetch",
