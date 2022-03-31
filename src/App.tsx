@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Home from "./screens/Home";
+import { Container } from "@mui/material";
+import { Box } from "@mui/system";
+import Quiz from "./screens/Quiz/Quiz";
+import PrivateRoute from "./components/PrivateRoute";
+import Summary from "./screens/Summary";
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Container maxWidth="sm">
+          <Box p={4}>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/quiz">
+                <PrivateRoute>
+                  <Quiz/>
+                </PrivateRoute>
+              </Route>
+              <Route exact path="/summary">
+                <PrivateRoute>
+                  <Summary />
+                </PrivateRoute>
+              </Route>
+            </Switch>
+          </Box>
+        </Container>
+      </Router>
     </div>
   );
 }
